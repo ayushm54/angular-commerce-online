@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'home', component: ItemsComponent
   },
   {
-    path: '', component: AppComponent,
+    path: '', redirectTo: '/auth', pathMatch: 'full'
   }
 ];
 

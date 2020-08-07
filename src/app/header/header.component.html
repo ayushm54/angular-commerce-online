@@ -1,18 +1,18 @@
 <mat-toolbar color="primary">
   <a style="cursor: pointer; font-size: 15px;">Angular E-commerce</a>
-  <div class="mainOptions">
-      <a>
-        <mat-icon matBadge="15" matBadgeColor="accent">shopping_cart</mat-icon>
-      </a>
+  <div class="mainOptions" *ngIf="isAuthenticated">
+    <a>
+      <mat-icon matBadge="15" matBadgeColor="accent">shopping_cart</mat-icon>
+    </a>
   </div>
   <span class="example-spacer"></span>
-  <p class="user">Sample User Name</p>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <div *ngIf="isAuthenticated">
+    <p class="user" style="display: inline-block;">{{ authenticatedUser.email }}</p>
+    <button  style="display: inline-block;" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>keyboard_arrow_down</mat-icon>
-  </button>
+    </button>
+  </div>
   <mat-menu #menu="matMenu">
-      <button mat-menu-item >Save Data</button>
-      <button mat-menu-item >Fetch Data</button>
-      <button mat-menu-item >Log Out</button>
+    <button mat-menu-item (click)="onLogout()">Log Out</button>
   </mat-menu>
 </mat-toolbar>

@@ -6,15 +6,13 @@
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
       <mat-card-content>
         <mat-form-field>
-          <input matInput type="email" placeholder="Email"
-          type="email" name='username' name="email" ngModel
-          required email>
+          <input matInput type="email" placeholder="Email" type="email" name='username' name="email" ngModel required
+            email>
         </mat-form-field>
         <br />
         <mat-form-field>
-          <input type="password" matInput placeholder="Password"
-          name='password' name="password"
-          ngModel required minlength="6"/>
+          <input type="password" matInput placeholder="Password" name='password' name="password" ngModel required
+            minlength="6" />
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
@@ -29,5 +27,8 @@
         </div>
       </mat-card-actions>
     </form>
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
   </mat-card>
 </div>
