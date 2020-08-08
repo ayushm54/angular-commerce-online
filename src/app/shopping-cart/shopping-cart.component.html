@@ -1,0 +1,58 @@
+<div class="row content">
+  <div class="col-xs-10">
+    <h1 style="font-size: 30px;font-weight: 500;">Shopping Cart</h1>
+    <table class="table table-responsive table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">
+            <p class="tableheadingTop">You have 3 items in your shopping cart.</p>
+          </th>
+          <th colspan="1">
+          </th>
+          <th>
+            <p class="tableheadingTop"><a style="cursor: pointer;">Clear Shopping Cart</a></p>
+          </th>
+        </tr>
+        <tr>
+          <th></th>
+          <th>
+            <p class="itemEnd">Product</p>
+          </th>
+          <th>
+            <p class="itemEnd">Quantity</p>
+          </th>
+          <th>
+            <p class="itemEnd">Price</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>
+            <img class="img-responsive img-circle" height="80" width="70" [src]="item.imageUrl">
+          </td>
+          <td><span class="itemEnd">{{ item.name }}</span></td>
+          <td>
+            <div class="itemEnd">
+              <button mat-icon-button color="primary">
+                <mat-icon>add</mat-icon>
+              </button>
+              {{ item.quantity }}
+              <button mat-icon-button color="warn">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+          </td>
+          <td><span class="itemEnd">{{ item.price }}</span></td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-raised-button color="primary">Checkout</button>
+          </td>
+          <td colspan="2"></td>
+          <td><span class="itemEnd">{{ cartTotal | currency:'₹' }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

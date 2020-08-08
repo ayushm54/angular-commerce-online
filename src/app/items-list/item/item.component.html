@@ -1,0 +1,14 @@
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+  <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of items">
+    <mat-card tabindex="0" class="mat-elevation-z4" >
+      <img mat-card-image [src]="item.imageUrl" class="itemImage">
+      <mat-card-content>
+        <div>{{ item.name}}</div>
+        <div>{{ item.price | currency:'₹'}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button class="addButton">ADD TO CART</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

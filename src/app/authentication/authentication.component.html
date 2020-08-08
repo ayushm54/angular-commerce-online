@@ -27,8 +27,9 @@
         </div>
       </mat-card-actions>
     </form>
-    <div class="alert alert-danger" *ngIf="errorMessage">
-      <p>{{ errorMessage }}</p>
-    </div>
   </mat-card>
 </div>
+<div class="alert alert-danger" *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

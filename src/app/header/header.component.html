@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <a style="cursor: pointer; font-size: 15px;">Angular E-commerce</a>
   <div class="mainOptions" *ngIf="isAuthenticated">
-    <a>
+    <a routerLink="/shopping-cart">
       <mat-icon matBadge="15" matBadgeColor="accent">shopping_cart</mat-icon>
     </a>
   </div>
@@ -13,6 +13,10 @@
     </button>
   </div>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="onLogout()">Log Out</button>
+    <!-- <a style="color: black; text-align: center;" mat-menu-item (click)="onLogout()">Log Out</a> -->
+    <button mat-menu-item>
+      <img style="width: 15px; margin-right: 10px;" src="../../assets//images/logout_icon.png">
+      <span>Logout</span>
+    </button>
   </mat-menu>
 </mat-toolbar>

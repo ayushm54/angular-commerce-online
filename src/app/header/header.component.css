@@ -35,3 +35,7 @@ color: #3f51b5;
   margin-right: -12px;
   font-size: 15px;
 }
+
+button.mat-menu-item{
+  outline:none;
+}

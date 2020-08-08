@@ -1,0 +1,27 @@
+.content {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  padding-left: 50px;
+}
+
+mat-card {
+  /* width: 200px; */
+  height: 248Px;
+}
+
+.itemImage {
+  height: 160px;
+  /* width: 180px; */
+  margin-bottom: -2px;
+}
+
+.addButton {
+  width: 110.01%;
+  background-color: #3f51b5;
+  color: #FFFFFF;
+  border: none;
+  display: block;
+  text-align: center;
+  margin-top: -10px !important;
+  margin-left: -8px !important;
+}
