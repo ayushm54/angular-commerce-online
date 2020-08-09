@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authSubscription: Subscription;
   isAuthenticated = false;
   authenticatedUser: User;
+  cartItemCount = 0;
 
   constructor(
     private authService: AuthService,

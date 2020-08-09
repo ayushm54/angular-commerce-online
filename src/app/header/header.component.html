@@ -1,20 +1,21 @@
 <mat-toolbar color="primary">
-  <a style="cursor: pointer; font-size: 15px;">Angular E-commerce</a>
+  <a style="cursor: pointer; font-size: 15px;" routerLink="/home">
+    Angular E-commerce
+  </a>
   <div class="mainOptions" *ngIf="isAuthenticated">
     <a routerLink="/shopping-cart">
-      <mat-icon matBadge="15" matBadgeColor="accent">shopping_cart</mat-icon>
+      <mat-icon [matBadge]="cartItemCount" matBadgeColor="accent">shopping_cart</mat-icon>
     </a>
   </div>
   <span class="example-spacer"></span>
   <div *ngIf="isAuthenticated">
     <p class="user" style="display: inline-block;">{{ authenticatedUser.email }}</p>
-    <button  style="display: inline-block;" mat-icon-button [matMenuTriggerFor]="menu">
+    <button style="display: inline-block;" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
   </div>
   <mat-menu #menu="matMenu">
-    <!-- <a style="color: black; text-align: center;" mat-menu-item (click)="onLogout()">Log Out</a> -->
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onLogout()">
       <img style="width: 15px; margin-right: 10px;" src="../../assets//images/logout_icon.png">
       <span>Logout</span>
     </button>

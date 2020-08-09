@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './shared/auth.iterceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +11,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ItemComponent } from './items-list/item/item.component';
@@ -37,6 +38,11 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FlexLayoutModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })

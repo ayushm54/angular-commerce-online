@@ -29,7 +29,6 @@ export class AuthenticationComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     this.isLoading = true;
-    console.log(form);
     if (!form.valid) {
       return;
     }
@@ -46,7 +45,6 @@ export class AuthenticationComponent implements OnInit {
 
     authObs.subscribe(
       (response) => {
-        console.log(response);
         this.isLoading = false;
         this.router.navigate(['/home']);
       },

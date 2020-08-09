@@ -23,6 +23,10 @@
   background-color: #afb2c2;
 }
 
+.activeLinkClass {
+  color: #f1f1f1;
+  background-color: #afb2c2;
+}
 
 /* can be used for the main content */
 .main {
@@ -31,6 +35,6 @@
   padding: 0px 10px;
 }
 
-a {
+.sidenav a {
   cursor: pointer;
 }

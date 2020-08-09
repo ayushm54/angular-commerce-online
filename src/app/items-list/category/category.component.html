@@ -1,8 +1,14 @@
 <div class="sidenav">
-  <a>All Categories</a>
-  <a>Bread</a>
-  <a>Dairy</a>
-  <a>Fruits</a>
-  <a>Seasoning and Spices</a>
-  <a>Vegetables</a>
+  <a (click)="filterItems('All')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='All'}">All Categories</a>
+  <a (click)="filterItems('Bread')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='Bread'}">Bread</a>
+  <a (click)="filterItems('Dairy')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='Dairy'}">Dairy</a>
+  <a (click)="filterItems('Fruits')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='Fruits'}">Fruits</a>
+  <a (click)="filterItems('Seasoning and Spices')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='Seasoning and Spices'}">Seasoning and Spices</a>
+  <a (click)="filterItems('Vegetables')"
+  [ngClass]="{'activeLinkClass':selectedCategory==='Vegetables'}">Vegetables</a>
 </div>
