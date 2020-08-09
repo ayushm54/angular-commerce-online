@@ -8,7 +8,7 @@ import { ItemService } from '../../shared/item.service';
 })
 export class CategoryComponent implements OnInit {
 
-  selectedCategory = '';
+  selectedCategory = 'All';
 
   constructor(
     private itemService: ItemService
