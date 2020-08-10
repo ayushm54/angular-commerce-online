@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { Subscription } from 'rxjs';
 import { User } from '../authentication/user.model';
+import { ShoppingCartService } from '../shared/shopping-cart.service';
 
 @Component({
   selector: 'app-header',
@@ -14,9 +15,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   authenticatedUser: User;
   cartItemCount = 0;
+  cartSubscription: Subscription;
 
   constructor(
     private authService: AuthService,
+    private cartService: ShoppingCartService
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +29,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isAuthenticated = !user ? false : true;
       }
     );
+    this.cartSubscription = this.cartService.itemCountSubject.subscribe(
+      (itemCount: number) => {
+        this.cartItemCount = itemCount;
+      }
+    );
   }
 
   onLogout(): void {
@@ -33,7 +41,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.authSubscription.unsubscribe();
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
 }

@@ -11,6 +11,11 @@
   border: none;
 }
 
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
 table tr, .table {
   border: 1px solid black;
 }

@@ -1,16 +1,22 @@
 <div class="row content">
   <div class="col-xs-10">
     <h1 style="font-size: 30px;font-weight: 500;">Shopping Cart</h1>
-    <table class="table table-responsive table-bordered">
+    <p *ngIf="cartItems.length===0">
+      No Items in cart. Please add some items!.
+    </p>
+    <table class="table table-responsive table-bordered" *ngIf="cartItems.length!==0">
       <thead>
         <tr>
           <th colspan="2">
-            <p class="tableheadingTop">You have 3 items in your shopping cart.</p>
+            <p class="tableheadingTop">You have {{ cartItems.length }} items in your shopping cart.</p>
           </th>
           <th colspan="1">
           </th>
           <th>
-            <p class="tableheadingTop"><a style="cursor: pointer;">Clear Shopping Cart</a></p>
+            <p class="tableheadingTop">
+              <button mat-raised-button color="warn"
+              (click)="clearCart()">Clear Cart</button>
+            </p>
           </th>
         </tr>
         <tr>
@@ -27,30 +33,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items">
+        <tr *ngFor="let cartItem of cartItems">
           <td>
-            <img class="img-responsive img-circle" height="80" width="70" [src]="item.imageUrl">
+            <img class="img-responsive img-circle" height="60" width="60" [src]="cartItem.item.imageUrl">
           </td>
-          <td><span class="itemEnd">{{ item.name }}</span></td>
+          <td><span class="itemEnd">{{ cartItem.item.name }}</span></td>
           <td>
             <div class="itemEnd">
               <button mat-icon-button color="primary">
                 <mat-icon>add</mat-icon>
               </button>
-              {{ item.quantity }}
+              {{ cartItem.quantity }}
               <button mat-icon-button color="warn">
                 <mat-icon>remove</mat-icon>
               </button>
             </div>
           </td>
-          <td><span class="itemEnd">{{ item.price }}</span></td>
+          <td><span class="itemEnd">{{ cartItem.itemTotal }}</span></td>
         </tr>
         <tr>
           <td>
             <button mat-raised-button color="primary">Checkout</button>
           </td>
           <td colspan="2"></td>
-          <td><span class="itemEnd">{{ cartTotal | currency:'₹' }}</span></td>
+          <td><span class="itemEnd">{{ shoppingCartItems.cartTotal | currency:'₹' }}</span></td>
         </tr>
       </tbody>
     </table>

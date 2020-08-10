@@ -35,6 +35,10 @@ export class ItemComponent implements OnInit, OnDestroy {
     );
   }
 
+  addToCart(item: Item): void {
+    this.itemService.addItemToCart(item);
+  }
+
   ngOnDestroy(): void {
     if (this.itemsChangedSubscription) {
       this.itemsChangedSubscription.unsubscribe();

@@ -7,7 +7,7 @@
         <div>{{ item.price | currency:'₹'}}</div>
       </mat-card-content>
       <mat-card-footer>
-        <button mat-raised-button class="addButton">ADD TO CART</button>
+        <button mat-raised-button class="addButton" (click)="addToCart(item)">ADD TO CART</button>
       </mat-card-footer>
     </mat-card>
   </div>

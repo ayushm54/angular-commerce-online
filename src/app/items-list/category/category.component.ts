@@ -8,7 +8,15 @@ import { ItemService } from '../../shared/item.service';
 })
 export class CategoryComponent implements OnInit {
 
-  selectedCategory = 'All';
+  selectedCategory = 'All Categories';
+  categories = [
+    'All Categories',
+    'Bread',
+    'Dairy',
+    'Fruits',
+    'Seasoning and Spices',
+    'Vegetables'
+  ];
 
   constructor(
     private itemService: ItemService

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DatStorageService } from './data-storage-service';
 import { Item } from './item.model';
 import { Observable, of, Subject } from 'rxjs';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({providedIn: 'root'})
 export class ItemService {
@@ -9,7 +10,10 @@ export class ItemService {
   private items: Item[] = [];
   itemsChanged = new Subject<Item[]>();
 
-  constructor(private dataService: DatStorageService) { }
+  constructor(
+    private dataService: DatStorageService,
+    private cartService: ShoppingCartService
+  ) { }
 
   setItems(items: Item[]): void {
     this.items = items;
@@ -20,7 +24,7 @@ export class ItemService {
   }
 
   filterItems(category: string): void {
-    if (category === 'All') {
+    if (category.includes('All')) {
       this.itemsChanged.next(this.items.slice());
     } else {
       const filteredItems = this.items.filter(
@@ -30,5 +34,9 @@ export class ItemService {
       );
       this.itemsChanged.next(filteredItems);
     }
+  }
+
+  addItemToCart(item: Item): void {
+    this.cartService.addItemToCart(item);
   }
 }
