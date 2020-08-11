@@ -1,0 +1,42 @@
+<div class="row content">
+  <h1 style="font-weight: 500;font-size: 30px;">Shipping</h1>
+</div>
+<div class="row">
+<div class="col-md-6">
+    <form #shippingForm="ngForm">
+      <label>Name</label>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name='name' ngModel required>
+      </mat-form-field>
+      <label>Address</label>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Line 1" name='addressLine1' ngModel required>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="margin-top: 12px;">
+        <input matInput type="text" placeholder="Line 2" name='addressLine2' ngModel required>
+      </mat-form-field>
+      <label>City</label>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" name='city' ngModel required>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Place Order</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <!-- <table class="table table-responsive table-bordered" style="border-radius: 0.5rem;">
+      <thead>
+        <tr>
+          <th><h1>Order Summary</h1></th>
+        </tr>
+        <tr>
+          <th><p>You have 8 items in your shopping cart</p></th>
+        </tr>
+      </thead>
+    </table> -->
+    <div class="jumbotron jumbotronCustom">
+      <h1 style="margin-bottom: 2px;">Order Summary</h1>
+      <p>You have 8 items in your shopping cart</p>
+      <table class></table>
+    </div>
+  </div>
+</div>

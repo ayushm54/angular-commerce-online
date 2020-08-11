@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 import { Item } from './item.model';
-import { ItemService } from './item.service';
+import { AuthService } from './auth.service';
+import { User } from './user.model';
+import { ShoppingCartItems } from './shopping-cart.service';
 
 @Injectable({ providedIn: 'root' })
 export class DatStorageService {
-  constructor(
-    private http: HttpClient
-  ) { }
+  private loggedInUser = '';
+  user: {
+    email: string;
+    id: string;
+    _token: string;
+    _tokenExpirationDate: string;
+  };
+
+  constructor(private http: HttpClient) {
+    this.user = JSON.parse(localStorage.getItem('userData'));
+  }
 
   // storeRecipes(): void {
   //     const recipes = this.recipeService.getRecipes();
@@ -35,5 +45,17 @@ export class DatStorageService {
           });
         })
       );
+  }
+
+  saveCartSnapshot(shoppingCartItems: ShoppingCartItems): void {
+    // this.http.put(
+    //   'https://angular-recipe-87935.firebaseio.com/cart.json',
+    //   {
+    //     emailId: this.user.email,
+    //     cart: shoppingCartItems
+    //   }
+    // ).subscribe((response) => {
+    //   console.log(response);
+    // });
   }
 }

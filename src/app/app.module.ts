@@ -16,6 +16,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ItemComponent } from './items-list/item/item.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShippingComponent } from './checkout/shipping/shipping.component';
+import { SummaryComponent } from './checkout/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     AuthenticationComponent,
     LoadingSpinnerComponent,
     ItemComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ShippingComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

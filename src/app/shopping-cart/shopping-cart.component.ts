@@ -3,6 +3,7 @@ import { Item } from '../shared/item.model';
 import { ShoppingCart } from '../shared/shopping-cart.model';
 import { ShoppingCartService, ShoppingCartItems } from '../shared/shopping-cart.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,7 +17,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   cartSubscription: Subscription;
 
   constructor(
-    private cartService: ShoppingCartService
+    private cartService: ShoppingCartService,
+    private router: Router
   ) { }
   ngOnInit(): void {
     this.shoppingCartItems = this.cartService.getCartItems();
@@ -32,6 +34,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   clearCart(): void{
     this.cartService.clearCart();
+  }
+
+  checkout(): void{
+
   }
 
   ngOnDestroy(): void{

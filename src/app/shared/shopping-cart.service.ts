@@ -2,6 +2,7 @@ import { Item } from './item.model';
 import { Injectable } from '@angular/core';
 import { ShoppingCart } from './shopping-cart.model';
 import { Subject } from 'rxjs';
+import { DatStorageService } from './data-storage-service';
 
 export class ShoppingCartItems {
   cartItems: ShoppingCart[];
@@ -15,7 +16,9 @@ export class ShoppingCartService {
   itemCountSubject = new Subject<number>();
   itemCount = 0;
 
-  constructor() {
+  constructor(
+    private dataService: DatStorageService
+  ) {
     this.shoppingCartItems = new ShoppingCartItems();
     this.shoppingCartItems.cartItems = [];
     this.shoppingCartItems.cartTotal = 0;
@@ -32,6 +35,7 @@ export class ShoppingCartService {
     this.shoppingCartItems.cartTotal = this.shoppingCartItems.cartTotal + +item.price;
     this.cartUpdated.next(this.shoppingCartItems);
     this.itemCountSubject.next(this.itemCount);
+    this.dataService.saveCartSnapshot(this.shoppingCartItems);
   }
 
   updateCart(): void {}
