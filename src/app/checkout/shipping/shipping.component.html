@@ -19,24 +19,24 @@
       <mat-form-field appearance="outline">
         <input matInput type="text" name='city' ngModel required>
       </mat-form-field>
-      <button mat-raised-button color="primary">Place Order</button>
+      <button mat-raised-button color="primary" (click)="placeOrder()"
+      [disabled]="!shippingForm.valid">Place Order</button>
     </form>
   </div>
-  <div class="col-md-6">
-    <!-- <table class="table table-responsive table-bordered" style="border-radius: 0.5rem;">
-      <thead>
-        <tr>
-          <th><h1>Order Summary</h1></th>
-        </tr>
-        <tr>
-          <th><p>You have 8 items in your shopping cart</p></th>
-        </tr>
-      </thead>
-    </table> -->
+  <div class="col-md-6" id="summary">
     <div class="jumbotron jumbotronCustom">
       <h1 style="margin-bottom: 2px;">Order Summary</h1>
-      <p>You have 8 items in your shopping cart</p>
-      <table class></table>
+      <p>You have {{ shoppingCartItems.cartItems.length }} items in your shopping cart</p>
+      <table class="table table-responsive table-striped">
+        <tr *ngFor="let cartItem of shoppingCartItems.cartItems">
+          <td><h4>{{ cartItem.quantity }} x {{ cartItem.item.name }}</h4></td>
+          <td><h4>{{ cartItem.itemTotal | currency: '₹' }}</h4></td>
+        </tr>
+        <tr>
+          <td><h3>Total</h3></td>
+          <td><h3>{{ shoppingCartItems.cartTotal | currency: '₹' }}</h3></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

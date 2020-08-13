@@ -16,8 +16,13 @@ mat-form-field {
   font-size: 10px;
 }
 
-.table td, .table th {
-  border: none;
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table td{
+  width: 100%;
 }
 
 .jumbotronCustom {
@@ -26,4 +31,10 @@ mat-form-field {
   border-radius: 0.5rem;
   padding-top: 7px;
   padding-left: 10px
+}
+
+@media only screen and (max-width: 600px) {
+  #summary {
+    margin-top: 40px;
+  }
 }

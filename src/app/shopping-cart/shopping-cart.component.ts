@@ -3,7 +3,7 @@ import { Item } from '../shared/item.model';
 import { ShoppingCart } from '../shared/shopping-cart.model';
 import { ShoppingCartService, ShoppingCartItems } from '../shared/shopping-cart.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -29,7 +29,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
         this.cartItems = this.shoppingCartItems.cartItems;
       }
     );
-
   }
 
   clearCart(): void{
@@ -37,7 +36,12 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   checkout(): void{
-
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+          cartItems: JSON.stringify(this.shoppingCartItems)
+      }
+  };
+    this.router.navigate(['shipping'], navigationExtras);
   }
 
   ngOnDestroy(): void{
